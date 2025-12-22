@@ -137,7 +137,7 @@ const pushedImage = new docker.Image(baseName("docker-image"), {
   build: {
     context: dockerContextPath,
     dockerfile: dockerfilePath,
-    Platform: "linux/amd64",
+    platform: "linux/amd64",
   },
   registry: {
     server: loginServer,
