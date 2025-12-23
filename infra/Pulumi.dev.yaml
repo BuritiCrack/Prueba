@@ -1,0 +1,5 @@
+config:
+  hello-aca-infra:appName: hello-aca
+  hello-aca-infra:env: dev
+  hello-aca-infra:imageTag: v1
+  hello-aca-infra:targetPort: "3000"
