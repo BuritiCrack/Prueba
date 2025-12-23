@@ -10,4 +10,6 @@ export interface AppConfig {
   dockerfilePath: string;
 
   targetPort: number;
+
+  istanceNum: string;
 }

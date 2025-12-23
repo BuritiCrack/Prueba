@@ -10,14 +10,14 @@ import { createContainerApp } from "./components/container-app";
 
 const cfg = getAppConfig();
 
-const rgName = baseName(cfg.appName, cfg.env, cfg.location, "rg");
-const acrLogicalName = baseName(cfg.appName, cfg.env, cfg.location, "acr");
-const lawName = baseName(cfg.appName, cfg.env, cfg.location, "law");
-const acaEnvName = baseName(cfg.appName, cfg.env, cfg.location, "aca-env");
-const dockerImageName = baseName(cfg.appName, cfg.env, cfg.location, "docker-image");
-const acaAppName = baseName(cfg.appName, cfg.env, cfg.location, "aca-app");
+const rgName = baseName(cfg.appName, cfg.env, cfg.location, cfg.istanceNum, "rg");
+const acrLogicalName = baseName(cfg.appName, cfg.env, cfg.location, cfg.istanceNum, "acr");
+const lawName = baseName(cfg.appName, cfg.env, cfg.location, cfg.istanceNum, "law");
+const acaEnvName = baseName(cfg.appName, cfg.env, cfg.location, cfg.istanceNum, "aca-env");
+const dockerImageName = baseName(cfg.appName, cfg.env, cfg.location, cfg.istanceNum, "docker-image");
+const acaAppName = baseName(cfg.appName, cfg.env, cfg.location, cfg.istanceNum, "aca-app");
 
-const acrSanitizedName = toValidAcrName(cfg.acrRequestedName, cfg.env, cfg.location);
+const acrSanitizedName = toValidAcrName(cfg.acrRequestedName, cfg.env, cfg.location, String(cfg.istanceNum));
 
 // 1) RG
 const resourceGroup = createResourceGroup(rgName, cfg.location);

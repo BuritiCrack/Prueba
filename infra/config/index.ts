@@ -4,11 +4,16 @@ import { AppConfig } from "./types";
 export function getAppConfig(): AppConfig {
   const config = new pulumi.Config();
 
+  const instanceNumRaw = config.get("instanceNum");
+  const instanceNum = instanceNumRaw
+  ? (Number(instanceNumRaw) + 1).toString().padStart(3, "0")
+  : "001";
+
   return {
     appName: config.get("appName") ?? "hello-aca",
     env: config.get("env") ?? pulumi.getStack(),
     location: config.get("location") ?? "eastus",
-
+    
     imageTag: config.get("imageTag") ?? "v1",
     acrRequestedName: config.get("acrRequestedName") ?? "Imagen-Prueba",
 
@@ -16,5 +21,8 @@ export function getAppConfig(): AppConfig {
     dockerfilePath: config.get("dockerfilePath") ?? "../Dockerfile",
 
     targetPort: Number(config.get("targetPort") ?? "3000"),
+    istanceNum: instanceNum
+    
+
   };
 }
